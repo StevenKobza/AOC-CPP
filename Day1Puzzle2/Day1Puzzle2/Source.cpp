@@ -8,7 +8,11 @@ int main()
 {
 	ifstream myfile("123.txt");
 	int numIncrease = 0;
-	int total1 = 0;
+	string input = "";
+	vector<int> inputs;
+	vector<vector<int>> intinputs;
+	//Try 1
+	/*int total1 = 0;
 	int total2 = 0;
 	int total3 = 0;
 	int total4 = 0;
@@ -133,6 +137,27 @@ int main()
 		cout << currLine % 10 << endl;
 		currLine++;
 		
+	}*/
+	//Try 2
+while (getline(myfile, input)) {
+	inputs.push_back(stoi(input));
 	}
+for (int i = 0; i < inputs.size()-2; i++) {
+	vector<int> temp;
+	temp.push_back(inputs.at(i));
+	temp.push_back(inputs.at(i + 1));
+	temp.push_back(inputs.at(i + 2));
+	intinputs.push_back(temp);
+}
+for (int i = 0; i < intinputs.size()-1; i++) {
+	//cout << intinputs.at(i).at(0) << " " << intinputs.at(i).at(1) << " " << intinputs.at(i).at(2) << endl;
+	int sumArr1;
+	int sumArr2;
+	sumArr1 = intinputs.at(i).at(0) + intinputs.at(i).at(1) + intinputs.at(i).at(2);
+	sumArr2 = intinputs.at(i + 1).at(0) + intinputs.at(i+1).at(1) + intinputs.at(i + 1).at(2);
+	if (sumArr2 > sumArr1) {
+		numIncrease++;
+	}
+}
 	cout << numIncrease << endl;
 }
